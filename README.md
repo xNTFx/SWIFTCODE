@@ -14,8 +14,8 @@ docker compose version
 ### Clone the Repository
 
 ```sh
-git clone <repository_url>
-cd <repository_name>
+git clone https://github.com/xNTFx/SWIFTCODE.git
+cd SWIFTCODE
 ```
 
 ### Navigate to the Backend Directory
@@ -30,6 +30,11 @@ Start Docker Desktop if it is not already running.
 
 ```sh
 docker compose up --build -d
+```
+
+### Once the container is up, the backend is available at:
+```sh
+http://localhost:8080
 ```
 
 ### Access the Running Container
@@ -69,8 +74,8 @@ Ensure you have **PostgreSQL** and **Go** installed.
 ### Clone the Repository
 
 ```sh
-git clone <repository_url>
-cd <repository_name>
+git clone https://github.com/xNTFx/SWIFTCODE.git
+cd SWIFTCODE
 ```
 
 ### Install PostgreSQL
@@ -123,16 +128,16 @@ go mod tidy
 
 ### Run the Application
 
-Once the application is running, the backend is available at:
-
-```
-http://localhost:8080
-```
-
 Start the application:
 
 ```sh
 go run cmd/server/main.go
+```
+
+Once the application is running, the backend is available at:
+
+```
+http://localhost:8080
 ```
 
 ### Run Tests Locally
