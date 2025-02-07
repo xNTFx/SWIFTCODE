@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: swift_codes
+    ports:
+      - "5433:5432" # changed port to 5433
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./internal/db/init/database.sql:/docker-entrypoint-initdb.d/database.sql
+
+  backend:
+    container_name: backend_server_ps
+    build: .
+    restart: always
+    depends_on:
+      - db
+    environment:
+      POSTGRES_URL: "postgres://postgres:admin@db:5432/swift_codes?sslmode=disable"
+      SERVER_PORT: "8080"
+      ALLOWED_ORIGINS: "*"
+    ports:
+      - "8080:8080"
+
+volumes:
+  pgdata:
